@@ -9,15 +9,13 @@ const people: Array<ManType> = [
     {name: 'Andrew Ivanov', age: 33}
 ]
 
-const dimychTransformator = (man: ManType) => {
-
-}
-
 const devs = people.map(man => ({
     stack: ['css, html', 'js', 'tdd', 'react'],
     firstName: man.name.split(' ')[0],
     lastName: man.name.split(' ')[1]
 }))
+
+console.log(devs)
 
 const messages = people.map(man => `Hello ${man.name.split(' ')[0]}. Welcome to IT-Incubator`);
 
