@@ -1,8 +1,8 @@
 import {
-    addNewBooksToUser,
+    addNewBooksToUser, addNewCompany, CompaniesType,
     makeHairStyle,
     moveUser,
-    moveUserToOtherHouse, removeBook, updateBook,
+    moveUserToOtherHouse, removeBook, updateBook, updateCompanyTitle, updateCompanyTitle2,
     upgradeUserLaptop,
     UserType,
     UserWithBooksType,
@@ -147,7 +147,7 @@ test('remove js book', () => {
 })
 
 
-test('companies', () => {
+test('add new companies', () => {
     let user: UserWithLaptopType & WithCompaniesType = {
         name: 'Victor',
         hair: 32,
@@ -159,7 +159,46 @@ test('companies', () => {
         companies: [{id: 1, title: 'Epam'}, {id: 2, title: 'IT-INCUBATOR'}]
     }
 
-    const userCopy = addNewCompany(user, 'js')
+    const userCopy = addNewCompany(user, 'GOOGLE')
 
+    expect(user).not.toBe(userCopy)
+    expect(user.laptop).toBe(userCopy.laptop)
+    expect(user.address).toBe(userCopy.address)
+    expect(userCopy.companies[2].title).toBe('GOOGLE')
+
+})
+
+test('update company', () => {
+    let user: UserWithLaptopType & WithCompaniesType = {
+        name: 'Victor',
+        hair: 32,
+        address: {
+            city: 'Minsk',
+            house: 12
+        },
+        laptop: {title: 'ZenBook'},
+        companies: [{id: 1, title: 'ЕПАМ'}, {id: 2, title: 'IT-INCUBATOR'}]
+    }
+
+    const userCopy = updateCompanyTitle(user, 1, 'EPAM')
+
+    expect(user).not.toBe(userCopy)
+    expect(user.address).toBe(userCopy.address)
+    expect(user.companies).not.toBe(userCopy.companies)
+    expect(userCopy.companies[0].title).toBe('EPAM')
+})
+
+test('update company state', () => {
+
+    const companies = {
+        'Victor': [{id: 1, title: 'ЕПАМ'}, {id: 2, title: 'IT-INCUBATOR'}],
+        'Artem': [{id: 2, title: 'IT-INCUBATOR'}],
+    }
+
+    const companyCopy = updateCompanyTitle2(companies, 'Victor', 1, 'IT-SOFT')
+
+    expect(companyCopy['Victor']).not.toBe(companies['Victor'])
+    expect(companyCopy['Artem']).toBe(companies['Artem'])
+    expect(companyCopy['Victor'][0].title).toBe('IT-SOFT')
 
 })
