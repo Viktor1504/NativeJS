@@ -72,19 +72,21 @@ console.log(setUpperCase('всем стУдентам инкуБатора Же�
 // isIncludes("Incubator", "Incubatorrr")=> true
 
 const isIncludes = (str, substring) => {
-    const strLowerCase = str.toLowerCase();
-    const substringLowerCase = substring.toLowerCase();
+    return substring.toLowerCase().split('').every(char => str.toLowerCase().includes(char));
 
-    for (const char of substringLowerCase) {
-        if (!strLowerCase.includes(char)) {
-            return false;
-        }
-    }
-
-    return true;
+    // const strLowerCase = str.toLowerCase();
+    // const substringLowerCase = substring.toLowerCase();
+    //
+    // for (const char of substringLowerCase) {
+    //     if (!strLowerCase.includes(char)) {
+    //         return false;
+    //     }
+    // }
+    //
+    // return true;
 }
 
-console.log(isIncludes("Incubator", "Incubatorrr"))
+console.log(isIncludes("Incubator", "inbbbba"))
 
 
 
