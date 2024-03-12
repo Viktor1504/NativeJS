@@ -43,3 +43,13 @@ test('destructuringn array', () => {
 
     expect(restLessons[0]).toStrictEqual({name: 'react', title: '3'})
 })
+
+
+test('destr', () => {
+    const arr = [1, 2, 45, 6, 4, 3, 2, 4]
+
+    const [, , a, ...rest] = arr
+    console.log(rest)
+    expect(a).toBe(45)
+
+})

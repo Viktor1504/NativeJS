@@ -47,7 +47,7 @@ test('array type test', () => {
     admins.push({name: 'Bandyugan', age: 10})
 
     expect(users[2]).toEqual({name: 'Bandyugan', age: 10})
-
+    expect(users).toEqual(admins)
 })
 
 test('value type test', () => {
@@ -59,6 +59,7 @@ test('value type test', () => {
     adminsCount++
 
     expect(adminsCount).toEqual(101)
+    expect(usersCount).toEqual(100)
 
 })
 

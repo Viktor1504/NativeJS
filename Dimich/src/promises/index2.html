@@ -1,0 +1,56 @@
+<meta charset="UTF-8">
+<script src="axios.js"></script>
+<script src="api.js"></script>
+
+<script>
+
+    // const getRandomAfter = (seconds) => {
+    //     return new Promise((resolve, reject) => {
+    //         setTimeout(() => {
+    //             const randomNum = Math.random()
+    //             resolve(randomNum)
+    //         }, seconds * 1000)
+    //     })
+    // }
+    //
+    // let promises = [getRandomAfter(1), getRandomAfter(2), getRandomAfter(3)]
+    // let commonPromise = Promise.all(promises)
+    // commonPromise.then((res) => {
+    //     console.log(res[0])
+    //     console.log(res[1])
+    //     console.log(res[2])
+    // })
+
+    // api.getVacanciesCountFromMicrosoft()
+    //     .then(data => {
+    //         console.log(data);
+    //     });
+    //
+    // api.getVacanciesCountFromGoogle()
+    //     .then(data => {
+    //         console.log(data);
+    //     })
+
+    // const msPromise = api.getVacanciesCountFromMicrosoft()
+    // const gPromise = api.getVacanciesCountFromGoogle()
+    //
+    // const allPromises = Promise.all([msPromise, gPromise])
+    //
+    //     .then(res => {
+    //         return api.sendStudentsCountToItKamasutra(res[0].data.vacancies + res[1].data.vacancies)
+    //     })
+    //     .then(res => {
+    //         console.log(res.data)
+    //     })
+    //
+
+    const loadVacanciesPromiseAsyncAwait = async () => {
+        const msPromise = await api.getVacanciesCountFromMicrosoft()
+        const gPromise = await api.getVacanciesCountFromGoogle()
+        const res = await api.sendStudentsCountToItKamasutra(msPromise.data.vacancies + gPromise.data.vacancies)
+
+        console.log(res.data)
+    }
+
+    loadVacanciesPromiseAsyncAwait()
+</script>

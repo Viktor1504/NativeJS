@@ -1,0 +1,82 @@
+<meta charset="UTF-8">
+<script>
+    // let myPromise = new Promise((resolve, reject) => {
+    //     setTimeout(() => {
+    //         const randValue = Math.random()
+    //         if (randValue > 0.5) {
+    //             resolve(randValue)
+    //         } else {
+    //             reject(randValue)
+    //         }
+    //     }, 2000)
+    //
+    //     console.log(1)
+    //     console.log(2)
+    //     console.log(3)
+    // })
+    //
+    // myPromise
+    //     .then(n => {
+    //         console.log(n)
+    //         return n * 1000
+    //     })
+    //     .then(n => {
+    //         console.log(n)
+    //         return n * 1000
+    //     })
+    //     .then(n => {
+    //         console.log(n)
+    //         return n * 1000
+    //     })
+    //     .catch(n => {
+    //         console.log(`${n} число меньше 0.5`)
+    //     })
+
+    const doAfter = (seconds) => {
+        return new Promise((resolve, reject) => {
+            console.log('Функция вызвалась')
+            setTimeout(() => {
+                resolve()
+            }, seconds * 1000)
+        })
+    }
+
+    // doAfter(1)
+    //     .then(() => console.log('Мой промис зарезолвился'))
+    //     .then(() => console.log('Мой промис зарезолвился следом'))
+
+    // const pr = doAfter(3)
+    //
+    //     .then(() => {
+    //         console.log('промис зарезолвился')
+    //         return 'Victor!'
+    //     })
+    //     .then(name => {
+    //         console.log(name)
+    //     })
+    //
+
+    // const pr5 = doAfter(5)
+    // const pr3 = doAfter(3)
+    // const pr10 = doAfter(10)
+    //
+    // pr5.then(() => console.log('я сработал через 5 секунд'))
+    // pr3.then(() => console.log('а я сработал через 3 секунд'))
+    // pr10.then(() => console.log('я сработал через 10 секунд'))
+
+    let pr = new Promise((resolve) => {
+        let data = {
+            cities: [{title: "Minsk"}, {title: "Kiev"}],
+            website: "it-kamasutra.com"
+        }
+        resolve(data)
+    })
+    pr.then(data => {
+        console.log(data)
+        return 'it-kamasutra.com'
+    })
+        .then(website => {
+            console.log(website)
+        })
+
+</script>
