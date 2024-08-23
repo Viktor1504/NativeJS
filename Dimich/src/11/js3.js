@@ -5,7 +5,7 @@ function divide(a, b) {
 }
 
 //
-// divide(10, 2)
+// divide(06-Lexical_Environment_Closure_Recursion, 2)
 //     .then(num => num)
 //     .then(num => num + 2)
 //     .then(num => num + 2)

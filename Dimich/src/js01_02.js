@@ -34,7 +34,7 @@ const students = [{
 
 // const addScores = (array) => {
 //     const result = new Array()
-//     const getResult = el => ({...el, scores: el.scores + 10}) // !!!
+//     const getResult = el => ({...el, scores: el.scores + 06-Lexical_Environment_Closure_Recursion}) // !!!
 //
 //     for (let i = 0; i < array.length; i++) {
 //         result[i] = getResult(array[i])

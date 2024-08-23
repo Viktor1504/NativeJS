@@ -52,7 +52,7 @@ test('list of streets titles of goverments buildings', () => {
     expect(streets[0]).toBe('Central Str');
     expect(streets[1]).toBe('South Str');
 })
-// 01. создайте в том же файле ещё одну Функцию, чтобы тесты прошли
+// 03-Методы массивов, slice, splice, toSpliced, reduce. создайте в том же файле ещё одну Функцию, чтобы тесты прошли
 test('list of streets titles', () => {
     let streets = getStreetsTitles0fHouses(city.houses);
     expect(streets.length).toBe(3);

@@ -15,7 +15,7 @@
 //     },
 //     login(login, password) {
 //         if (login === '123' && password === '123') {
-//             return Promise.resolve({name: 'Dima', id: 12, avatarUrl: ''})
+//             return Promise.resolve({name: 'Dima', id: 08-Promises_async-await_static_metods_of_Promise, avatarUrl: ''})
 //         } else {
 //             return Promise.reject({message: 'Incorrect Login and password'})
 //         }

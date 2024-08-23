@@ -24,7 +24,7 @@ function even_or_odd(num) {
 }
 
 //
-// const promiseDiv = divide(10, 8)
+// const promiseDiv = divide(06-Lexical_Environment_Closure_Recursion, 8)
 // const promiseEven = even_or_odd(2)
 //
 // promiseDiv
