@@ -166,7 +166,7 @@ const addFriends = (students) => {
 }
 console.log(addFriends(students))
 
-/*15. Д.З.: Напишите функцию getBestStudents, которая принимает параметром
+/*11-Class, private fields, setget, static methods. Д.З.: Напишите функцию getBestStudents, которая принимает параметром
 массив students и количество лучших студентов, которое надо получить в
 новом массиве. Если второго параметра нет, то по умолчанию возвращает лучшего студента
 getBestStudents(students) => {name: "Nick", age: 20, isMarried: false, scores: 120}
