@@ -1,155 +1,133 @@
 // __proto__ | prototype
 
-/*
+// Пример различия между __proto__ и prototype
+
 class Car {
     constructor(brand, maxSpeed) {
-        this.brand = brand
-        this.maxSpeed = maxSpeed
-        this.state = {}
+        this.brand = brand;
+        this.maxSpeed = maxSpeed;
     }
 
+    // Метод, который будет общим для всех объектов и находиться в прототипе класса (Car.prototype)
     startEngine() {
-        console.log(`${this.brand} is started`)
+        console.log(`Start ${this.brand}`);
     }
 
+    // Метод, который будет находиться в каждом новом объекте, так как он объявлен как стрелочная функция
     stopEngine = () => {
-        console.log(`${this.brand} is stopped`)
+        console.log(`Stop ${this.brand}`);
     }
 }
 
-const car1 = new Car('bmw', 220)
-const car2 = new Car('kia', 250)
-*/
+const car1 = new Car('BMW', 220);
+const car2 = new Car('BMW', 200);
 
-/*console.log(car1 === car2) //false
-console.log(car1.state === car2.state) //false
-console.log(car1.startEngine === car2.startEngine) //true
-console.log(car1.stopEngine === car2.stopEngine) //false*/
+console.log(car1 === car2) // false
+console.log(car1.brand === car2.brand); // true
+console.log(car1.startEngine === car2.startEngine); // true
+console.log(car1.stopEngine === car2.stopEngine) // false
 
-// __proto__ - это ссылка на prototype класса или ф-ции конструктора с помощью которого был создан объект
+/*__proto__ - это свойство является ссылкой на prototype класса или ф-ции конструктора, с помощью которого/которой был
+создан данный объект. */
 
-/*console.log(Car)
-console.log(car1.__proto__ === Car.prototype)*/
+console.log(car1.__proto__ === car2.__proto__) // true
+console.log(car1.__proto__ === Car.prototype); // true
 
-/*
-const a = 5
-const b = 5
-console.log(a.__proto__ === Number.prototype)
-console.log(a.__proto__ === b.__proto__)*/
+const arr = new Array()
+const arr2 = []
 
-/*
-const obj1 = {}
-const obj2 = {}
-const obj3 = new Object()
+console.log(arr.__proto__ === Array.prototype) // true
+console.log(arr2.__proto__ === Array.prototype) // true
 
-console.log(obj1.__proto__ === obj2.__proto__)
-console.log(obj1.__proto__ === Object.prototype)
-*/
-/*
-class Car {
-    constructor(brand, maxSpeed) {
-        this.brand = brand
-        this.maxSpeed = maxSpeed
-        this.state = {}
-    }
+const str = 'str';
+const str2 = 'str';
 
-    startEngine() {
-        console.log(`${this.brand} is started`)
-    }
+// console.log(str === str2) // true
+console.log(str2.__proto__ === String.prototype); // true
 
-    stopEngine = () => {
-        console.log(`${this.brand} is stopped`)
-    }
-}
+// При обращении к методу или свойству примитивного значения (например, str2), происходит неявный анбоксинг:
+// Примитив временно превращается в объект-обёртку (например, объект типа String).
+// Это позволяет использовать методы и свойства, доступные у объекта String.
+// После выполнения операции объект-обёртка уничтожается, и остаётся исходное примитивное значение.
 
-const car1 = new Car('bmw', 220)
-const car2 = new Car('kia', 250)*/
+console.log(Car.__proto__ === Function.prototype); // true
 
-/*console.log(car1)
-console.log(car1.__proto__ === Car.prototype)
-console.log(car1.__proto__.__proto__ === Object.prototype)
-console.log(car1.__proto__.__proto__.__proto__ === null)*/
+const num = new Number(5);
+const num2 = new Number(5);
 
-// console.log(Car.__proto__ === Function.prototype)
+console.log(num === num2); // false
 
-/*
+// num и num2 — это два разных объекта Number, каждый из которых содержит значение 5.
+// Хотя значения одинаковы, сравнение объектов с помощью === проверяет ссылки на объекты.
+// Поскольку num и num2 указывают на разные объекты в памяти, результат сравнения будет false.
+
+const num3 = 5;
+const num4 = 5;
+
+console.log(num3 === num4); // true
+
+// num3 и num4 — это примитивные числа (тип number).
+// В случае примитивов сравнение с помощью === выполняется по значению.
+// Оба числа равны 5, поэтому результат сравнения будет true.
+
+const number = 42
+console.log(number.__proto__ === Number.prototype)
+
+console.log(car1.__proto__.__proto__ === Object.prototype) // true
+console.log(Car.prototype.__proto__ === Object.prototype) // true
+console.log(Car.__proto__ === Function.prototype)
+
 console.log(Function.__proto__ === Function.prototype)
-console.log(Function.__proto__.__proto__ === Object.prototype)*/
 
-// console.log(Object.__proto__ === Function.prototype)
-
-
-/*class Car {
-    constructor(brand) {
-        this.brand = brand
-    }
-
-    startEngine() {
-        console.log(`${this.brand} is started`)
-    }
-
-    static compareCars(car1, car2) {
-        car1.speed > car2.speed ? console.log(`${car1.brand} is faster`) : console.log(`${car2.brand} is faster`)
-    }
-}*/
-
-/*class SuperCar extends Car {
-    constructor(brand, canFly) {
-        super(brand)
-        this.canFly = canFly
-    }
-
-    fly() {
-        console.log(`${this.brand} is flying`)
-    }
-}*/
-
-/*
-const superCar1 = new SuperCar('supBmw', 'black', 300, true)
-
-console.log(superCar1.__proto__ === SuperCar.prototype)
-console.log(superCar1.__proto__.__proto__ === Car.prototype)
-console.log(superCar1.__proto__.__proto__.__proto__ === Object.prototype)
-console.log(superCar1.__proto__.__proto__.__proto__.__proto__ === null)*/
-
-// superCar1.startEngine()
-
-function Car(brand, speed) {
-    this.brand = brand
-    this.speed = speed
+// как происходит наследование, раньше... с ипользованием ф-ции конструктора
+function Bike(brand, speed) {
+    this.brand = brand;
+    this.speed = speed;
 }
 
-Car.prototype.startEngine = function () {
-    console.log(`${this.brand} is started`)
+Bike.prototype.startEngine = function () {
+    console.log(`start ${this.brand}`);
 }
 
-Car.compareCars = function (car1, car2) { // это static - не доступен для истансов но доступен для класса
-    car1.speed > car2.speed ? console.log(`${car1.brand} is faster`) : console.log(`${car2.brand} is faster`)
+Bike.compareBikesSpeed = function (bike1, bike2) {
+    if (bike1.speed > bike2.speed) {
+        console.log(`${bike1.brand} is faster than ${bike2.brand}`);
+    } else {
+        console.log(`${bike2.brand} is faster than ${bike1.brand}`);
+    }
 }
 
-const car1 = new Car('BMW')
 
-// car1.startEngine()
-
-function SuperCar(brand, speed, canFly) {
-    this.brand = brand
-    this.speed = speed
-    this.canFly = canFly
+function SuperBike(brand, speed, canFly) {
+    Bike.call(this, brand, speed);
+    this.canFly = canFly;
 }
 
-const superCar1 = new SuperCar('SuperBMW', 300, true)
-const superCar2 = new SuperCar('SuperKIA', 400, true)
+SuperBike.prototype.fly = function () {
+    if (!this.canFly) {
+        console.log(`I can't start flying ${this.brand}`);
+        return;
+    }
+    console.log(`start flying ${this.brand}`);
+}
 
-// console.dir(superCar1)
+// SuperBike.prototype.__proto__ = Bike.prototype;
+// SuperBike.__proto__ = Bike
+Object.setPrototypeOf(SuperBike.prototype, Bike.prototype);
+Object.setPrototypeOf(SuperBike, Bike);
 
-/*// deplicated
-SuperCar.prototype.__proto__ = Car.prototype
-SuperCar.__proto__ = Car*/
+const bike1 = new Bike("Suzuki", 300)
+const bike2 = new Bike("Harley", 250)
+const superBike1 = new SuperBike('bmw', 1000, true);
+const superBike2 = new SuperBike('Yamaha', 700, true);
 
-Object.setPrototypeOf(SuperCar.prototype, Car.prototype)
-Object.setPrototypeOf(SuperCar, Car)
+superBike1.startEngine();
+superBike2.fly()
 
-// console.log(superCar1.__proto__ === SuperCar.prototype)
+Bike.compareBikesSpeed(bike1, bike2)
+SuperBike.compareBikesSpeed(bike1, superBike1)
 
-superCar1.startEngine()
-SuperCar.compareCars(superCar1, superCar2)
+
+
+
+
